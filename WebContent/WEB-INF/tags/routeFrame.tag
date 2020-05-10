@@ -23,11 +23,10 @@
 		</c:when>
 	</c:choose>
 	<p>${route.description}</p>
-	<p>${route.distance}Km</p>
-	<p>${route.elevation}m</p>
-	<p>${route.durationH}h${route.durationM}'</p>
-	<p>${route.kudos}</p>
-	<p>${route.date}</p>
+	<p>${route.distance}Km
+	${route.elevation}m
+	${route.durationH}h${route.durationM}
+	${route.date}</p>
 	<p>
 		<c:choose>
 			<c:when test="${route.difficulty=='1'}">
@@ -51,8 +50,9 @@
 			    				</c:otherwise>
 		</c:choose>
 	</p>
+	<p>${route.kudos}</p>
 	<c:if test="${CheckTypeFrame eq 'MainPage'}">
-		<p>
+		<p class="see">
 			<a class="logout_home"
 				href="<c:url value='CheckRouteServlet.do?routeID=${route.id}'/>">See
 			</a>

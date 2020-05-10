@@ -1,15 +1,17 @@
+<%@page import="org.apache.jasper.tagplugins.jstl.core.Import"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags"%>
 <!DOCTYPE html>
-<html id="list">
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/milligram.css" />
-<title>List of routes</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="stylesheet"
+		href="${pageContext.request.contextPath}/css/milligram.css" />
+	<title>List of routes</title>
 </head>
+
 <body>
 	<c:choose>
 		<c:when test="${userType eq  'NoUser'}">
@@ -92,21 +94,31 @@
 	</table>
 	<h2>List of routes by users:</h2>
 	<c:forEach var="routesByUser" items="${usersMap}">
-		<h3>User: ${routesByUser.key.username}</h3>
-		<h3>Email: ${routesByUser.key.email}</h3>
-		<div class="user_container">
-			<c:forEach var="route" items="${routesByUser.value}">
-				<t:routeFrame route="${route}"></t:routeFrame>
-			</c:forEach>
-		</div>
-		<c:if test="${BlockedRtDisplay ne 'Hide'}">
-			<div class="blocked_container">
+		<c:if test="${not empty routesByUser.value}">
+			<h3>User: ${routesByUser.key.username}</h3>
+			<h3>Email: ${routesByUser.key.email}</h3>
+			<div class="user_container">
 				<c:forEach var="route" items="${routesByUser.value}">
-					<c:if test="${route.blocked == '1'}">
+					<c:if test="${route.blocked ne '1'}">
 						<t:routeFrame route="${route}"></t:routeFrame>
 					</c:if>
 				</c:forEach>
 			</div>
+			<c:if test="${BlockedRtDisplay ne 'Hide'}">
+				<br>
+				
+				<h3>Blocked Routes</h3>
+				<div class="blocked_container">
+					
+					<c:forEach var="route" items="${routesByUser.value}">
+						<c:if test="${route.blocked == '1'}">
+							<input id="x" type="hidden" value="1">
+							<t:routeFrame route="${route}"></t:routeFrame>
+						</c:if>
+					</c:forEach>
+					
+				</div>
+			</c:if>
 		</c:if>
 	</c:forEach>
 </body>

@@ -26,7 +26,7 @@
 						<input type="text" style="display:none" value="Min" name="SortType">
 						<label for="minkud">Min Kudos</label>
 						<input name="minkud" class="minkud" type="number" min="0" value="0" step="1" >
-						<input id="icon_search" type="submit" value="->">
+						<input id="icon_minKud" type="submit" value="->">
 					</form>
 				</li>
 			</ul>
