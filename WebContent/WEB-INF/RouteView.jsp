@@ -41,16 +41,31 @@
 			</c:choose>
 		</c:when>
 	</c:choose>
-	<t:routeFrame route="${route}"></t:routeFrame>
+		<div class="rtView"
+		<c:choose>
+			<c:when test="${route.blocked=='1'}">
+				id="block_div"
+			 </c:when>
+		</c:choose>>
+
+		<t:routeHead route="${route}"></t:routeHead>
+
+		<t:routeInfo route="${route}"></t:routeInfo>
+
+
+		<c:choose>
+			<c:when test="${userType ne 'NoUser'}">
+				<t:kudo route="${route}"></t:kudo>
+			</c:when>
+		</c:choose>
+		<p>${route.kudos}</p>
+	
 		<c:choose>
 		<c:when test="${userType eq  'NoUser'}">
 			<a class="logout_h"
 			href="<c:url value='LoginServlet.do'/>">Login for kudos.</a>
 		</c:when>
-		<c:otherwise>
-			<t:kudo route="${route}"></t:kudo>
-		</c:otherwise>
 	</c:choose>
-	
+	</div>
 </body>
 </html>

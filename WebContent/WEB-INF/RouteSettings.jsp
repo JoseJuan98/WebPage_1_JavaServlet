@@ -18,16 +18,15 @@
 </head>
 
 <body>
-    <div class="div_log">
-        <h1 class="login_h1">BHike</h1>
+    <div class="div_settings">
+        <h1 class="sett_h1">BHike</h1>
         <p id="error_log" class="login_field">${errormsg}</p>
-        <p class="login_h1">
             <c:choose>
-                <c:when test="${CheckTypeRoute eq 'Edit'}"> Replace the information. </c:when>
-                <c:when test="${CheckTypeRoute eq 'Delete'}"> Confirm password to proceed. </c:when>
-                <c:when test="${CheckTypeRoute eq 'Create'}"> Create a new route. </c:when>
+                <c:when test="${CheckTypeRoute eq 'Edit'}"><p class="login_h1"> Replace the information. </p></c:when>
+                <c:when test="${CheckTypeRoute eq 'Delete'}"><p class="login_h1"> Confirm password to proceed. </p></c:when>
+                <c:when test="${CheckTypeRoute eq 'Create'}"><p class="login_h1"> Create a new route. </p></c:when>
             </c:choose>
-        </p>
+     
         <form method="post" action=
                 <c:choose>
 	                <c:when test="${CheckTypeRoute eq 'Edit'}"> "EditRouteServlet.do" </c:when>

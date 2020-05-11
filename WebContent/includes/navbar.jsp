@@ -17,6 +17,7 @@
 			href="<c:url value='UpdateUserServlet.do'/>">User Settings</a></li>
 		<li id="home_right_bar"><a class="logout_h"
 			href="<c:url value='LogoutServlet.do'/>">Logout</a></li>
+		<li><img class="img_nav" alt="BHike" src="${pageContext.request.contextPath}/img/BHike_blue.png"></li>
 	</ul>
 
 </div>

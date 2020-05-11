@@ -2,10 +2,14 @@
 * Author: Jose Juan Pena Gomez
 * 
 */
-/*! LOGIN And Create User */
 div {
 	background-color: #FDFDFD;
 }
+body p,h1,h2,h3 {
+	margin-left: 2.5%;
+}
+/*! LOGIN And Create User */
+
 .login_home {
 	color: blue;
 	padding-left: 35px;
@@ -62,13 +66,58 @@ div {
     align-self: center;
     color: red;
 }
-
+/* Forms */
+.div_settings {
+    border: 0.1rem solid #d1d1d1;
+    border-width: 0.5px;
+    margin: -2% 30% auto 30%;
+    /* top right bottom left */
+    border-radius: 8px;
+}
+.sett_h1 {
+    text-align-last: center;
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 1%;
+}
+/* LOGO */
+.div_logo{
+	margin-left: 35%;
+	/*padding: 10px;	
+	height: 150px;
+	margin-bottom: 15px;
+	background-color: #e8d6f3;
+	border-radius: 8px;*/
+	margin-top: -75px;
+	margin-bottom: -75px;
+	width: 25%;
+	text-align: center;
+}
+.img_logo {
+	display: inline-block;
+	height: 200px;
+	width: 200px;
+}
 /* List of Routes */
+.div_routesUsr {
+	margin-top: 75px;
+	padding: 20px 20px 20px 20px;	
+	border-bottom:  0.1rem solid #e1e1e1;
+}
 .list_routes_tab {
+	border-radius: 4px;
 	background-color: #FDFDFD;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	padding: 0px 25px 0px 15px;
+	height: 600px;
+	display: inline-block;
+	overflow: auto;
+	margin: 5px 2.5% 20px 2.5%;
 }	
+.rtUsr_container {
+	padding-top: 40px;
+	border-bottom:  0.1rem solid #e1e1e1;
+}
 .user_routes {
     margin: 1.2em 0.8em 1.2em 0.8em;
     padding: 1px;
@@ -79,15 +128,17 @@ div {
     border-left: 0.1rem solid #e1e1e1;
     text-align: center;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    position: relative;
 }
 .user_routes p:not(.see){
 	margin: 4px 0px 0px 10px;
 	text-align: left;
 }
 .see {
-	
+	position: absolute;
 	bottom: 0;
-	
+	align-self: center;
+	margin-left: 10px;
 }
 .title_us_route {
     border-bottom: 0.1rem solid #e1e1e1;
@@ -101,21 +152,50 @@ div {
 	width: 100%;
 	display: inline-block;
 }
-.user_container{
+.routes_container{
 	border-radius: 8px;
 	display: flex;
 	width: auto;
     flex-wrap: wrap;
     justify-content: center;
 }
-
-
+/* 		- Blocked Routes */
+.blocked_container {	
+	border-radius: 4px;	
+	display: flex;
+	width: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+}
+#block_div{
+	border: 0.2rem solid red;
+	border-left: .1rem solid #d1d1d1;
+	border-right: .1rem solid #d1d1d1;
+}
+.block_div p:not(.see){
+	margin: 4px 0px 0px 10px;
+	text-align: left;
+}
+/* RouteView */
+.rtView {
+    margin: 1.2em 0.8em 1.2em 0.8em;
+    padding: 1px;
+    /*border-radius: 8px;*/
+    width: 100%;
+    height: 700px;
+    display: inline-block;
+    border-left: 0.1rem solid #e1e1e1;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    position: relative;
+}
 /* Navegation Bar */
 .nav_div {
     width: 100%;
-    position: fixed;
-	background-color: transparent;
+    position: fixed;	
 	height: 0px;
+	z-index: 1;
 }
 
 .nav_div ul {
@@ -135,7 +215,14 @@ div {
 .nav_div li:not(search_li) {
     display: inline-block;
 }
-
+.img_nav{
+	display: inline-block;
+	margin-top: -37.5px;
+	margin-left: 175px;
+	margin-right: -200px;
+	height: 100px;
+	width: 100px;
+}
 .nav_div a:hover {
     background-color: #ddd;
     color: black;
@@ -279,15 +366,25 @@ div {
 	float: left;
 }
 .kud_img {
-	margin-left: 20px;
-	height: 35px;
-	width: 35px;
+	margin-left: 10px;
+	height: 25px;
+	width: 25px;
+}
+.kudo_div {
+	margin: 4px 10px 10px 4px;
+	display: inline-block;
+	float: left;
 }
 /* Filter */
 .filter_div {
 	border-radius: 8px;	
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-	width: 425px;
+	width: 250px;
+	left: 1%;
+	position: fixed;
+	top: 80px;
+	z-index: 1;
+	padding: 3px 2px 0px 5px;
 }
 .details,
 .show,
@@ -338,18 +435,19 @@ div {
     border-bottom: 0.3rpm solid;
     outline: 0;
     caret-color: transparent;
-    width: 200px;
+    width: 75px;
     color: #9b4dca;
     border-bottom: 0.1rem solid #d1d1d1;
     height: 3.8rem;
     padding: .6rem 1.0rem;
     margin-top: 4px;
-    padding-right: 8%;
+    padding-right: 30px;
 }
 #icon_minKud {
     display: none;
     position: relative;
-    margin-left: -30px;
+    margin-left: -40px;
+    width: 40px;
     background-color: transparent;
     border: none;
     color: #9b4dca;
@@ -366,14 +464,7 @@ div {
 	margin-right: 15%;
 	float: right;
 }
-/* Blocked Routes */
-.blocked_container {
-	border: 0.2rem solid red;
-	border-radius: 4px;	
-	display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
+
 
 /*!
  * Milligram v1.3.0
@@ -905,7 +996,7 @@ ul {
 
 table {
     border-spacing: 2px;
-    width: 100%;
+    width: 95%;
     border-radius: 8px;
 }
 

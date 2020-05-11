@@ -6,13 +6,14 @@
 <!DOCTYPE html>
 
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<link rel="stylesheet"
-		href="${pageContext.request.contextPath}/css/milligram.css" />
-	<title>List of routes</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/milligram.css" />
+<title>List of routes</title>
 </head>
 
 <body>
+	<div>
 	<c:choose>
 		<c:when test="${userType eq  'NoUser'}">
 			<c:import url="/includes/navbarNoUser.jsp"></c:import>
@@ -21,11 +22,19 @@
 			<c:import url="/includes/navbar.jsp"></c:import>
 		</c:otherwise>
 	</c:choose>
-
-	<h1 class="title_m">Welcome ${user.getUsername()} to BHike!</h1>
+	
+	<div class="div_logo">
+		
+		<img class="img_logo" alt="BHike" src="${pageContext.request.contextPath}/img/BHike_purple.png">
+		
+	</div>
+	
 	<c:import url="/includes/filterSearch.jsp"></c:import>
-	<h1>Different Lists:</h1>
+	
+	<p> If you are searching for a new adventure this is your page.</p>
+	<br>
 	<h2>List of routes:</h2>
+	
 	<table class="list_routes_tab">
 		<thead>
 			<tr>
@@ -92,34 +101,43 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	<h2>List of routes by users:</h2>
+	</div>
+	<br>
+	<br>
+	<div class="rtUsr_container">
+	<h2>Routes by users:</h2>
 	<c:forEach var="routesByUser" items="${usersMap}">
+	
 		<c:if test="${not empty routesByUser.value}">
-			<h3>User: ${routesByUser.key.username}</h3>
-			<h3>Email: ${routesByUser.key.email}</h3>
-			<div class="user_container">
-				<c:forEach var="route" items="${routesByUser.value}">
-					<c:if test="${route.blocked ne '1'}">
-						<t:routeFrame route="${route}"></t:routeFrame>
-					</c:if>
-				</c:forEach>
-			</div>
-			<c:if test="${BlockedRtDisplay ne 'Hide'}">
-				<br>
-				
-				<h3>Blocked Routes</h3>
-				<div class="blocked_container">
-					
+			<div class="div_routesUsr">
+				<h3 class="title_m">User: ${routesByUser.key.username}</h3>
+				<h3 class="title_m">Email: ${routesByUser.key.email}</h3>
+				<div class="routes_container">
 					<c:forEach var="route" items="${routesByUser.value}">
-						<c:if test="${route.blocked == '1'}">
-							<input id="x" type="hidden" value="1">
+						<c:if test="${route.blocked ne '1'}">
 							<t:routeFrame route="${route}"></t:routeFrame>
 						</c:if>
 					</c:forEach>
-					
 				</div>
-			</c:if>
+				<c:if test="${BlockedRtDisplay ne 'Hide'}">
+					<br>
+
+					<h3 class="title_m">Blocked Routes</h3>
+					<div class="blocked_container">
+
+						<c:forEach var="route" items="${routesByUser.value}">
+							<c:if test="${route.blocked == '1'}">
+								<input id="x" type="hidden" value="1">
+								<t:routeFrame route="${route}"></t:routeFrame>
+							</c:if>
+						</c:forEach>
+
+					</div>
+				</c:if>
+			</div>
 		</c:if>
+
 	</c:forEach>
+	</div>
 </body>
 </html>

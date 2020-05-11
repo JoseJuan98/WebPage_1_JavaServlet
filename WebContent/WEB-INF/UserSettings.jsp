@@ -16,16 +16,16 @@
 </head>
 
 <body>
-    <div class="div_log">
-        <h1 class="login_h1">BHike</h1>
+    <div class="div_settings">
+        <h1 class="sett_h1">BHike</h1>
         <p id="error_log" class="login_field">${errormsg}</p>
-        <p class="login_h1">
+        
             <c:choose>
-                <c:when test="${CheckType eq 'Update'}"> Replace the field to change and confirm password. </c:when>
-                <c:when test="${CheckType eq 'Delete'}"> Confirm password to proceed. </c:when>
-                <c:when test="${CheckType eq 'Create'}">  Create a new account of BHike. </c:when>
+                <c:when test="${CheckType eq 'Update'}"><p class="login_h1"> Replace the field to change and confirm password. </p></c:when>
+                <c:when test="${CheckType eq 'Delete'}"><p class="login_h1"> Confirm password to proceed. </p></c:when>
+                <c:when test="${CheckType eq 'Create'}"><p class="login_h1">  Create a new account of BHike. </p></c:when>
             </c:choose>
-        </p>
+       
         <form method="post" action=
                 <c:choose>
 	                <c:when test="${CheckType eq 'Update'}"> "UpdateUserServlet.do" </c:when>

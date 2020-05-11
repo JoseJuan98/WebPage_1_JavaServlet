@@ -4,8 +4,8 @@
 
 
 <div class="filter_div">
-	<a id="hide1" href="#hide1" class="hide">+ Filter Search</a> <a
-		id="show1" href="#show1" class="show">- Filter Search</a>
+	<a id="hide1" href="#hide1" class="hide"> + Filter Search</a> <a
+		id="show1" href="#show1" class="show"> - Filter Search</a>
 	<div class="details">
 		<div class="content_fil">
 			<ul>
