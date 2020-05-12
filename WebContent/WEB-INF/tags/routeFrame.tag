@@ -9,11 +9,10 @@
 				id="block_div"
 			 </c:when>
 		</c:choose>>
-		
-	<t:routeHead route="${route}"></t:routeHead>
 	
-	<t:routeInfo route="${route}"></t:routeInfo>
+		<t:routeHead route="${route}"></t:routeHead>
 
+		<t:routeInfo route="${route}"></t:routeInfo>
 	
 		<c:choose>
 		<c:when test="${userType ne 'NoUser'}">

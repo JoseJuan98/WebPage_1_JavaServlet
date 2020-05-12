@@ -23,6 +23,7 @@ import es.unex.pi.dao.RoutesCategoriesDAO;
 import es.unex.pi.model.Category;
 import es.unex.pi.model.Route;
 import es.unex.pi.model.RoutesCategories;
+import es.unex.pi.model.User;
 
 /**
  * Servlet implementation class EditRouteServlet
@@ -63,8 +64,10 @@ public class EditRouteServlet extends HttpServlet {
 
 			List<Category> catList = catDao.getAll();
 			request.setAttribute("catList", catList);
+			
+			User user = (User) session.getAttribute("user");//***
 
-			if (rt != null) {
+			if (rt != null && user.getId() == rt.getIdu()) {//****
 				RoutesCategoriesDAO rtCtDao = new JDBCRoutesCategoriesDAOImpl();
 				rtCtDao.setConnection(conn);
 
@@ -94,7 +97,7 @@ public class EditRouteServlet extends HttpServlet {
 	@SuppressWarnings("unused")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		logger.info("Handling GET EditRouteServlet");
+		logger.info("Handling POST EditRouteServlet");
 		HttpSession session = request.getSession();
 
 		if (session.getAttribute("user") == null) {
@@ -111,7 +114,11 @@ public class EditRouteServlet extends HttpServlet {
 
 			// To get all the values that you can not in the form, like kudos or blocked
 			Route route = (Route) session.getAttribute("routeA");
-			if (route != null) {
+			User user = (User) session.getAttribute("user");
+			
+			
+			logger.info(" User id" + user.getId() + " route Idu"+ route.getIdu());
+			if (route != null && user.getId() == route.getIdu()) { //TODO
 				session.removeAttribute("routeA");
 
 				route.setDescription(request.getParameter("desc"));
@@ -158,12 +165,22 @@ public class EditRouteServlet extends HttpServlet {
 					request.setAttribute("catList", catList);
 					request.setAttribute("errormsg", "Please select a category.");
 					request.setAttribute("route", route);
+					
+					//TODO
+					RoutesCategoriesDAO rtCtDao = new JDBCRoutesCategoriesDAOImpl();
+					rtCtDao.setConnection(conn);
+
+					List<RoutesCategories> catRtList = rtCtDao.getAllByRoute(route.getId());
+
+					request.setAttribute("catRtList", catRtList);
+					//****
 					RequestDispatcher view = request.getRequestDispatcher("WEB-INF/RouteSettings.jsp");
 					view.forward(request, response);
 				}
 			} else {
-				RequestDispatcher view = request.getRequestDispatcher("WEB-INF/Login.jsp");
-				view.forward(request, response);
+				response.sendRedirect("LoginServlet.do"); //TODO
+				//RequestDispatcher view = request.getRequestDispatcher("WEB-INF/Login.jsp");
+				//view.forward(request, response);
 			}
 		}
 	}

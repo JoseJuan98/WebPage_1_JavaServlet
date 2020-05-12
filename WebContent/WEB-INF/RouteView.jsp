@@ -41,17 +41,18 @@
 			</c:choose>
 		</c:when>
 	</c:choose>
-		<div class="rtView"
+	<div class="rtView"
 		<c:choose>
-			<c:when test="${route.blocked=='1'}">
-				id="block_div"
-			 </c:when>
-		</c:choose>>
-
-		<t:routeHead route="${route}"></t:routeHead>
-
-		<t:routeInfo route="${route}"></t:routeInfo>
-
+				<c:when test="${route.blocked=='1'}">
+					id="block_div"
+				 </c:when>
+			</c:choose>>
+		<div class="rtView_img_div">
+			<t:routeHead route="${route}"></t:routeHead>
+		</div>
+		<div class="rtView_info_div">
+			<t:routeInfo route="${route}"></t:routeInfo>
+		</div>
 
 		<c:choose>
 			<c:when test="${userType ne 'NoUser'}">
@@ -59,13 +60,13 @@
 			</c:when>
 		</c:choose>
 		<p>${route.kudos}</p>
-	
+
 		<c:choose>
-		<c:when test="${userType eq  'NoUser'}">
-			<a class="logout_h"
-			href="<c:url value='LoginServlet.do'/>">Login for kudos.</a>
-		</c:when>
-	</c:choose>
+			<c:when test="${userType eq  'NoUser'}">
+				<a class="logout_h" href="<c:url value='LoginServlet.do'/>">Login
+					for kudos.</a>
+			</c:when>
+		</c:choose>
 	</div>
 </body>
 </html>
